@@ -1,38 +1,122 @@
-.App {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #333;
+  color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  color: red;
+  padding: 15px;
+  border: 1px solid gray;
+}
+tr,
+td {
+  border: 1px solid gray;
+  padding: 15px;
+  text-align: left;
+}
+
+img {
+  border-radius: 5px;
+}
+
+/* pagintation */
+
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+.pagination {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination li {
+  padding: 0;
+  margin: 0;
+}
+.pagination .disabled a {
+  background-color: transparent;
+  color: gray;
+}
+.pagination .active a {
+  z-index: 0;
+}
+
+.pagination li a {
+  background-color: transparent;
+  border-color: gray;
+  color: #fff;
+}
+
+/* Search */
+.search-container {
+  padding: 5px 20px;
+  margin: 10px 0;
+}
+#search {
+  width: 400px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid gray;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+#searchBtn {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+/* Modal */
+#open-movie-title:hover {
+  opacity: 0.5;
+  transform: translate(3px);
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+#modalCloseBtn {
+  background-color: darkred;
+  border-color: red;
+  float: right;
+}
+
+.modalContent {
+  padding: 10px;
+  margin-top: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#movie-title {
+  text-align: center;
+  text-shadow: 2px 2px 1px blueviolet;
+}
+.modalContent p {
+  padding: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.modalContent p span {
+  color: greenyellow;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#movie-description {
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 50px;
+  background-color: rgb(204, 204, 204);
+  color: #333;
 }
