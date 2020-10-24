@@ -19,10 +19,9 @@ export default function CelebsList({
   handleCloseModal,
   modalContentData,
 }) {
-  console.log('modalContentData', modalContentData);
   return (
     <React.Fragment>
-      <tr key={celebrity.id}>
+      <tr>
         <td>{celebrity.name}</td>
         <td>{celebrity.popularity}</td>
         <td>

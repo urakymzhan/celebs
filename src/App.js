@@ -1,7 +1,11 @@
 import React from 'react';
 import './App.css';
 import CelebsList from './components/CelebsList';
+import CelebsHeader from './components/CelebsHeader';
+import FavoritesList from './components/FavoritesList';
+import FormContainer from './components/FormContainer';
 import PaginationContainer from './components/PaginationContainer';
+import Search from './components/Search';
 import { api_key } from './secret';
 
 const fetchJson = (activePage) => {
@@ -31,6 +35,17 @@ class App extends React.Component {
 
       showModal: false,
       modalContentData: [],
+
+      fname: '',
+      lname: '',
+      mname: '',
+      gender: 'male',
+      popularity: 0,
+      interesting: false,
+      popular: false,
+      hbeautiful: false,
+
+      favorites: [],
     };
   }
 
@@ -71,6 +86,7 @@ class App extends React.Component {
     }
   };
   handleSearchClick = (e) => {
+    e.preventDefault();
     const { activePage, searchText } = this.state;
     const search_api = `https://api.themoviedb.org/3/search/person?api_key=${api_key}&language=en-US&query=${searchText}&page=${activePage}&include_adult=false`;
     // use better validation maybe
@@ -97,8 +113,60 @@ class App extends React.Component {
     this.setState({ showModal: false });
   };
 
+  handleFormChange = (e) => {
+    console.log('value: ', e.target.value);
+    console.log('name: ', e.target.name);
+    console.log('checked: ', e.target.checked);
+
+    const { value, name, type, checked } = e.target;
+
+    type === 'checkbox'
+      ? this.setState({ [name]: checked })
+      : this.setState({ [name]: value });
+  };
+
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+    const {
+      fname,
+      lname,
+      mname,
+      gender,
+      popularity,
+      interesting,
+      popular,
+      hbeautiful,
+    } = this.state;
+
+    let favorites = [];
+    favorites = [
+      ...this.state.favorites,
+      {
+        fname,
+        lname,
+        mname,
+        gender,
+        popularity,
+        interesting,
+        popular,
+        hbeautiful,
+      },
+    ];
+    // favorites.push({
+    //   fname,
+    //   lname,
+    //   mname,
+    //   gender,
+    //   popularity,
+    //   interesting,
+    //   popular,
+    //   hbeautiful,
+    // });
+
+    this.setState({ favorites });
+  };
   render() {
-    const { celebsData, modalContentData } = this.state;
+    const { celebsData, modalContentData, favorites } = this.state;
     const {
       activePage,
       total_results,
@@ -106,6 +174,17 @@ class App extends React.Component {
       limit,
       leftLimit,
       showModal,
+    } = this.state;
+
+    const {
+      fname,
+      lname,
+      mname,
+      gender,
+      popularity,
+      interesting,
+      popular,
+      hbeautiful,
     } = this.state;
 
     let result = (
@@ -130,6 +209,7 @@ class App extends React.Component {
       result = celebsData.map((celebrity) => {
         return (
           <CelebsList
+            key={celebrity.id}
             celebrity={celebrity}
             showModal={showModal}
             handleOpenModal={this.handleOpenModal}
@@ -139,33 +219,16 @@ class App extends React.Component {
         );
       });
     }
-    console.log('celebsData', celebsData);
+    // console.log('celebsData', celebsData);
     return (
       <div className="App">
-        <div className="search-container">
-          <input
-            type="input"
-            placeholder="Search by artist name"
-            id="search"
-            onChange={this.handleSearchChange}
-          />
-          <input
-            type="button"
-            value="Search"
-            id="searchBtn"
-            onClick={this.handleSearchClick}
-          />
-        </div>
+        <Search
+          handleSearchChange={this.handleSearchChange}
+          handleSearchClick={this.handleSearchClick}
+        />
 
         <table>
-          <thead>
-            <tr>
-              <th>Full Name</th>
-              <th>Popularity</th>
-              <th>Profile</th>
-              <th>Known For</th>
-            </tr>
-          </thead>
+          <CelebsHeader />
           <tbody>{result}</tbody>
         </table>
         <PaginationContainer
@@ -176,6 +239,22 @@ class App extends React.Component {
           limit={limit}
           leftLimit={leftLimit}
         />
+
+        <div className="form-favorites-container">
+          <FormContainer
+            fname={fname}
+            lname={lname}
+            mname={mname}
+            gender={gender}
+            popularity={popularity}
+            interesting={interesting}
+            popular={popular}
+            hbeautiful={hbeautiful}
+            handleFormChange={this.handleFormChange}
+            handleFormSubmit={this.handleFormSubmit}
+          />
+          <FavoritesList favorites={favorites} />
+        </div>
       </div>
     );
   }

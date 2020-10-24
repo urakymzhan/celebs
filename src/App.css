@@ -2,6 +2,9 @@
   box-sizing: border-box;
 }
 
+.App {
+  padding: 20px;
+}
 body {
   background: #333;
   color: #fff;
@@ -64,8 +67,8 @@ img {
 
 /* Search */
 .search-container {
-  padding: 5px 20px;
-  margin: 10px 0;
+  padding: 0 20px;
+  margin-bottom: 20px;
 }
 #search {
   width: 400px;
@@ -119,4 +122,67 @@ img {
   border-radius: 50px;
   background-color: rgb(204, 204, 204);
   color: #333;
+}
+
+/* forms */
+
+.form-favorites-container {
+  display: flex;
+  margin: 30px 0;
+}
+.form-container {
+  /* border: 1px solid gray; */
+  /* padding: 15px; */
+  flex: 1;
+  text-align: left;
+}
+.form-container input {
+  color: black;
+  border-radius: 5px;
+  border: 1px solid #333;
+  padding: 5px;
+}
+
+.form-container input[type='submit'] {
+  padding: 5px 40px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+.form-container label {
+  width: 100%;
+  margin-top: 15px;
+}
+.form-container input[type='text'],
+input[type='number'] {
+  width: 100%;
+  margin: 5px 0;
+}
+.form-container input[type='checkbox'] {
+  margin-right: 10px;
+  margin-left: 15px;
+}
+.form-container input[type='radio'] {
+  margin-right: 5px;
+  margin-left: 15px;
+}
+
+.favorites-container {
+  /* border: 1px solid gray; */
+  /* padding: 15px; */
+  flex: 2;
+  margin-left: 20px;
+}
+
+legend {
+  margin: 30px;
+  width: 260px;
+  color: #fff;
+  padding: 0 20px;
+  border-bottom: none;
+}
+
+fieldset {
+  border: 1px solid gray;
+  padding: 10px;
 }
