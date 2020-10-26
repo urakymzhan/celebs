@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1dcadd24bc98edd59f715e56271dd9e4",
+    "revision": "9361f4662204d0b798b6b399882b893a",
     "url": "/celebs/index.html"
   },
   {
-    "revision": "5ac0caa1304629b7b731",
-    "url": "/celebs/static/css/main.8951ed8e.chunk.css"
+    "revision": "ee6b26e0bfba94bd1b97",
+    "url": "/celebs/static/css/main.61154f57.chunk.css"
   },
   {
-    "revision": "94f5a1dff50edf139553",
-    "url": "/celebs/static/js/2.ab826d98.chunk.js"
+    "revision": "d205da4df1f7efdea766",
+    "url": "/celebs/static/js/2.a9685b14.chunk.js"
   },
   {
     "revision": "f17d886c238b2f65956edf0881882911",
-    "url": "/celebs/static/js/2.ab826d98.chunk.js.LICENSE.txt"
+    "url": "/celebs/static/js/2.a9685b14.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5ac0caa1304629b7b731",
-    "url": "/celebs/static/js/main.d3ab95d8.chunk.js"
+    "revision": "ee6b26e0bfba94bd1b97",
+    "url": "/celebs/static/js/main.0717905a.chunk.js"
   },
   {
     "revision": "2d89e92baf455edb06cf",
